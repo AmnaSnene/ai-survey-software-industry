@@ -97,7 +97,7 @@ function createSurveyForm() {
 
   var roleItem = form.addMultipleChoiceItem()
     .setTitle('Which best describes your current role?')
-    .setShowOther(true)
+    .showOtherOption(true)
     .setRequired(true);
   roleItem.setChoiceValues(ROLES);
 
@@ -153,7 +153,7 @@ function createSurveyForm() {
       'Education / academia',
       'Energy & utilities'
     ])
-    .setShowOther(true)
+    .showOtherOption(true)
     .setRequired(true);
 
   form.addListItem()
@@ -183,7 +183,7 @@ function createSurveyForm() {
   form.addCheckboxItem()
     .setTitle('Which AI tools do you use? (select all that apply)')
     .setChoiceValues(AI_TOOLS)
-    .setShowOther(true)
+    .showOtherOption(true)
     .setRequired(true);
 
   form.addListItem()
@@ -245,7 +245,7 @@ function createSurveyForm() {
   form.addCheckboxItem()
     .setTitle('For which tasks do you use AI? (select all that apply)')
     .setChoiceValues(TASKS)
-    .setShowOther(true)
+    .showOtherOption(true)
     .setRequired(true);
 
   form.addListItem()
@@ -366,7 +366,7 @@ function createSurveyForm() {
       'Cost',
       "I haven't had the chance to try"
     ])
-    .setShowOther(true);
+    .showOtherOption(true);
 
   form.addParagraphTextItem()
     .setTitle('What is the biggest change AI has made in the way you work? (optional)');
