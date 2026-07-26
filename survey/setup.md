@@ -47,7 +47,7 @@ Suggested channels: LinkedIn, X/Twitter, Reddit (r/programming, r/devops,
 r/ExperiencedDevs), Hacker News (Show HN), Discords/Slacks, your university
 mailing lists. When posting, emphasize:
 
-- 100% anonymous, 5 minutes
+- 100% anonymous, under 10 minutes
 - Results are **open data**, published in **real time** on a public dashboard
 
 ## 6. During collection

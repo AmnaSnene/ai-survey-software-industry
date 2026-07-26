@@ -57,18 +57,25 @@ so clicking any chart filters the whole page.
 
 ### Page 4 — Impact
 - 100% stacked bars for the four 1–5 effect scales (Q19–Q22)
-- Grouped bar: average effect score by role
-- Bar: review habits (Q23) and production incidents (Q24)
+- 100% stacked bars for the challenge / deep-thinking / motivation scales (Q23–Q25)
+- Bar: "would you go back to working without AI?" (Q26), breakdown by role
+- Bar: production incidents (Q27)
 
-### Page 5 — Organization
-- Stacked bar: AI policy (Q25) by company size (Q4)
-- Bar: training offered (Q26)
+### Page 5 — AI code verification
+- Stacked bar: review habits (Q28) by role
+- Bar: how much AI-generated code people actually read (Q29)
+- Stacked bar: team review practices (Q30) by company size
+- Bar: SUM of each `test_*` calculated field (Q31)
 
-### Page 6 — Concerns & outlook
+### Page 6 — Organization
+- Stacked bar: AI policy (Q32) by company size (Q4)
+- Bar: training offered (Q33)
+
+### Page 7 — Concerns & outlook
 - Bar: SUM of each `concern_*` calculated field
-- Stacked bar: worry level (Q29) by role or experience
-- Bar: 3-year outlook (Q30)
-- Optional word-frequency table over the open question (Q32)
+- Stacked bar: worry level (Q36) by role or experience
+- Bar: 3-year outlook (Q37)
+- Optional word-frequency table over the open question (Q39)
 
 ## 4. Keep it real-time
 

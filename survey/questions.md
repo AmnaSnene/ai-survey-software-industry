@@ -6,11 +6,14 @@ is generated from `create-form.gs`, which must stay in sync with this file
 
 Design goals:
 
-- **5–7 minutes** to complete (32 questions, mostly multiple choice)
+- **Under 10 minutes** to complete (39 questions, mostly multiple choice)
 - **Fully anonymous** — no email, no name, no IP-based tracking beyond Google's defaults
 - **Analysis-ready** — every closed question maps 1:1 to a dashboard chart
 - **Inclusive** — covers industry roles (dev, DevOps/SRE, QA, management, data/ML, security)
   **and** academia (students, researchers)
+- **Never boxed in** — "Not applicable" and/or a free-text "Other" on every
+  question where Google Forms technically allows it (scale questions can't
+  have extra options — that's a Forms limitation)
 
 ---
 
@@ -38,11 +41,11 @@ Demographics enable the most valuable cross-tabs (e.g. adoption by role × senio
 
 | # | Question | Type | Options | Required | Rationale |
 |---|----------|------|---------|----------|-----------|
-| 8 | Do you use AI tools for your work or studies? | Multiple choice | Yes, regularly · Yes, occasionally · I tried, but stopped · No, never | Yes | **Branching question.** "Stopped"/"Never" jump to Section 6 — non-users still answer concerns & outlook. |
+| 8 | Do you use AI tools for your work or studies? | Multiple choice | Yes, regularly · Yes, occasionally · I tried, but stopped · No, never | Yes | **Branching question.** "Stopped"/"Never" jump to Section 7 — non-users still answer concerns & outlook. |
 | 9 | Which AI tools do you use? (select all) | Checkboxes + "Other" | ChatGPT · GitHub Copilot · Claude · Google Gemini · Cursor · Windsurf / Codeium · Amazon Q Developer · Tabnine · JetBrains AI Assistant · Microsoft 365 Copilot · Perplexity · Self-hosted / local models (Ollama, LM Studio…) | Yes | Market-share view of tools. |
-| 10 | Which one do you rely on the most? | Dropdown | Same list as Q9 | Yes | Forces a single "primary" tool → clean comparisons. |
+| 10 | Which one do you rely on the most? | Dropdown | Same list as Q9 + Other | Yes | Forces a single "primary" tool → clean comparisons. |
 | 11 | How often do you use AI tools? | Multiple choice | Multiple times per day · About once a day · A few times a week · A few times a month · Rarely | Yes | Adoption intensity. |
-| 12 | Who pays for the AI tools you use? | Multiple choice | My employer provides paid tools · I pay for them personally · I only use free tiers · A mix of employer and personal | Yes | Employer funding vs. shadow usage. |
+| 12 | Who pays for the AI tools you use? | Multiple choice | My employer provides paid tools · I pay for them personally · I only use free tiers · A mix of employer and personal · Not applicable | Yes | Employer funding vs. shadow usage. |
 | 13 | How do you mainly interact with AI tools? (select all) | Checkboxes | IDE / editor integration · Web chat interface · CLI / terminal · API in my own scripts or tools · AI agents in CI/CD · Mobile app | Yes | Measures embedded-in-workflow vs. copy-paste usage. |
 | 14 | Which best describes your AI workflow? | Multiple choice | Chat - I ask questions and copy/paste answers · Editor assistance - autocomplete and inline suggestions as I type · Agentic - the AI edits files, runs commands, and completes multi-step tasks · A mix of the above | Yes | Distinguishes conversational AI from agentic workflows — the key emerging-practice metric. |
 | 15 | Which IDE or editor do you mainly use? | Dropdown | VS Code · Cursor · JetBrains IDEs (IntelliJ, PyCharm…) · Visual Studio · Neovim / Vim · Zed · Windsurf · Emacs · Other · I mostly do not use an IDE or editor anymore | Yes | Tests whether AI is augmenting or replacing the IDE; the last option captures agent-first/terminal users. |
@@ -52,7 +55,7 @@ Demographics enable the most valuable cross-tabs (e.g. adoption by role × senio
 | # | Question | Type | Options | Required | Rationale |
 |---|----------|------|---------|----------|-----------|
 | 16 | For which tasks do you use AI? (select all) | Checkboxes + "Other" | Writing new code · Debugging and fixing bugs · Code review · Writing or maintaining tests · Refactoring · Documentation · Learning a new language or framework · CI/CD pipelines · Infrastructure as Code · Incident diagnosis / log analysis · Monitoring and alerting · Security analysis · Architecture and design · Data analysis · Communication (emails, specs, tickets) | Yes | The core "use cases by role" dataset. DevOps-specific tasks included. |
-| 17 | Which task benefits the most from AI? | Dropdown | Same list as Q16 | Yes | Forces ranking → headline finding. |
+| 17 | Which task benefits the most from AI? | Dropdown | Same list as Q16 + Other | Yes | Forces ranking → headline finding. |
 | 18 | How much time does AI save you per week? | Multiple choice | None · Less than 1 hour · 1–5 hours · 6–10 hours · More than 10 hours | Yes | Quantified productivity claim. |
 
 ## Section 4 — Impact on your work (page 5)
@@ -63,28 +66,40 @@ Demographics enable the most valuable cross-tabs (e.g. adoption by role × senio
 | 20 | What effect has AI had on the quality of your work? | Scale 1–5 | 1 = Much worse, 5 = Much better | Yes | Quality vs. speed trade-off. |
 | 21 | What effect has AI had on your learning and skill growth? | Scale 1–5 | 1 = Much worse, 5 = Much better | Yes | Tests the "skill erosion" hypothesis. |
 | 22 | What effect has AI had on your job satisfaction? | Scale 1–5 | 1 = Much worse, 5 = Much better | Yes | Well-being angle. |
-| 23 | Do you review AI-generated code before using it? | Multiple choice | Always · Usually · Sometimes · Rarely · Never | Yes | Trust/verification behavior. |
-| 24 | Has AI-generated output ever caused a bug or incident that reached production? | Multiple choice | Yes, a serious incident · Yes, minor issues · No · Not sure | Yes | Real-world risk measurement. |
+| 23 | Since using AI, do you feel more or less challenged by your work? | Scale 1–5 | 1 = Much less challenged, 5 = Much more challenged | Yes | Intellectual stimulation: does AI remove the interesting parts or the boring parts? |
+| 24 | What effect has AI had on how deeply you think about problems? | Scale 1–5 | 1 = I think much less deeply, 5 = I think much more deeply | Yes | The "do you feel you think less" question — cognitive engagement. |
+| 25 | What effect has AI had on your motivation at work? | Scale 1–5 | 1 = Much less motivated, 5 = Much more motivated | Yes | Direct motivation metric, complements satisfaction (Q22). |
+| 26 | If you could, would you go back to working without AI? | Multiple choice | Definitely not · Probably not · Not sure · Probably yes · Definitely yes · Not applicable | Yes | Revealed preference: satisfaction with vs. without AI. |
+| 27 | Has AI-generated output ever caused a bug or incident that reached production? | Multiple choice | Yes, a serious incident · Yes, minor issues · No · Not sure · Not applicable | Yes | Real-world risk measurement. |
 
-## Section 5 — Your organization (page 6)
+## Section 5 — AI-generated code & verification (page 6)
+
+| # | Question | Type | Options | Required | Rationale |
+|---|----------|------|---------|----------|-----------|
+| 28 | Do you review AI-generated code before using it? | Multiple choice + "Other" | Always · Usually · Sometimes · Rarely · Never · Not applicable | Yes | Personal trust/verification behavior. |
+| 29 | How much of the AI-generated code do you actually read? | Multiple choice + "Other" | Every line · Most of it · I skim through it · Only the risky or critical parts · Almost none · Not applicable | Yes | Reading depth — finer signal than "review yes/no". |
+| 30 | Does your team still do code reviews for AI-generated code? | Multiple choice + "Other" | Yes, same as for human-written code · Yes, but lighter than before · No, AI-generated code skips review · I don't have a team · Not applicable | Yes | Team-level practice: is review culture surviving AI? |
+| 31 | How do you test AI-generated code? (select all) | Checkboxes + "Other" | I write and run unit tests · I run the existing test suite · Manual testing · I ask the AI to write tests for its own code · Code review only · I don't specifically test it · Not applicable | Yes | Verification toolkit; "AI tests itself" is a notable pattern. |
+
+## Section 6 — Your organization (page 7)
 
 Students and researchers: answer about your university or program.
 
 | # | Question | Type | Options | Required | Rationale |
 |---|----------|------|---------|----------|-----------|
-| 25 | Which best describes your organization's AI policy? | Multiple choice | AI use is encouraged and funded · Allowed with restrictions · Allowed, but no official guidance · Discouraged or banned · There is no policy · I don't know · Not applicable | Yes | Policy landscape. |
-| 26 | Does your organization provide AI training? | Multiple choice | Yes, formal training · Yes, informal (tips, lunch & learns…) · No · I don't know | Yes | Enablement gap. |
-| 27 | Which AI tools (if any) are explicitly banned where you work or study? | Short answer | — | No | Free text; aggregated manually. |
+| 32 | Which best describes your organization's AI policy? | Multiple choice | AI use is encouraged and funded · Allowed with restrictions · Allowed, but no official guidance · Discouraged or banned · There is no policy · I don't know · Not applicable | Yes | Policy landscape. |
+| 33 | Does your organization provide AI training? | Multiple choice | Yes, formal training · Yes, informal (tips, lunch & learns…) · No · I don't know · Not applicable | Yes | Enablement gap. |
+| 34 | Which AI tools (if any) are explicitly banned where you work or study? | Short answer | — | No | Free text; aggregated manually. |
 
-## Section 6 — Concerns & outlook (page 7, all respondents)
+## Section 7 — Concerns & outlook (page 8, all respondents)
 
 | # | Question | Type | Options | Required | Rationale |
 |---|----------|------|---------|----------|-----------|
-| 28 | What are your biggest concerns about AI in software work? (select all) | Checkboxes | Security vulnerabilities · Data privacy / leaks · Intellectual property & licensing · Job displacement · Skill erosion · Over-reliance on AI · Incorrect output / hallucinations · Bias & ethics · Environmental impact · None of these | Yes | Risk ranking; includes non-users' reasons. |
-| 29 | How worried are you about AI's impact on your job or career prospects? | Scale 1–5 | 1 = Not worried at all, 5 = Extremely worried | Yes | Anxiety metric, comparable across roles. |
-| 30 | In 3 years, how do you expect AI's role in your daily work to evolve? | Multiple choice | It will shrink · It will stay about the same · It will grow somewhat · It will grow significantly · AI will perform most of my current tasks | Yes | Future outlook. |
-| 31 | If you do NOT currently use AI tools, why not? (select all — skip if you use AI) | Checkboxes + "Other" | Company policy forbids it · Privacy or security concerns · Not useful for my work · Output quality concerns · Ethical concerns · Cost · I haven't had the chance to try | No | Non-adoption barriers; only reachable meaningfully by non-users via branching. |
-| 32 | What is the biggest change AI has made in the way you work? (optional) | Paragraph | — | No | Qualitative color for the final report. |
+| 35 | What are your biggest concerns about AI in software work? (select all) | Checkboxes | Security vulnerabilities · Data privacy / leaks · Intellectual property & licensing · Job displacement · Skill erosion · Over-reliance on AI · Incorrect output / hallucinations · Bias & ethics · Environmental impact · None of these | Yes | Risk ranking; includes non-users' reasons. |
+| 36 | How worried are you about AI's impact on your job or career prospects? | Scale 1–5 | 1 = Not worried at all, 5 = Extremely worried | Yes | Anxiety metric, comparable across roles. |
+| 37 | In 3 years, how do you expect AI's role in your daily work to evolve? | Multiple choice | It will shrink · It will stay about the same · It will grow somewhat · It will grow significantly · AI will perform most of my current tasks | Yes | Future outlook. |
+| 38 | If you do NOT currently use AI tools, why not? (select all — skip if you use AI) | Checkboxes + "Other" | Company policy forbids it · Privacy or security concerns · Not useful for my work · Output quality concerns · Ethical concerns · Cost · I haven't had the chance to try | No | Non-adoption barriers; only reachable meaningfully by non-users via branching. |
+| 39 | What is the biggest change AI has made in the way you work? (optional) | Paragraph | — | No | Qualitative color for the final report. |
 
 ---
 
@@ -94,9 +109,10 @@ Students and researchers: answer about your university or program.
 Page 1 Consent
   → Page 2 About you
   → Page 3 Tools & adoption
-       Q8 = "Yes, regularly" / "Yes, occasionally" → Page 4 → Page 5 → Page 6 → Page 7
-       Q8 = "I tried, but stopped" / "No, never"  ────────────────→ Page 7 (submit)
+       Q8 = "Yes, regularly" / "Yes, occasionally" → Pages 4 → 5 → 6 → 7 → 8
+       Q8 = "I tried, but stopped" / "No, never"  ─────────────────→ Page 8 (submit)
 ```
 
-Non-users skip tools/use-cases/impact/org sections but still provide demographics,
-concerns, outlook, and their reasons for not using AI (Q31) — which is valuable data.
+Non-users skip tools/use-cases/impact/verification/org sections but still provide
+demographics, concerns, outlook, and their reasons for not using AI (Q38) —
+which is valuable data.

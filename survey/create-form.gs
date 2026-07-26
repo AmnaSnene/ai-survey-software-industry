@@ -73,11 +73,11 @@ var ROLES = [
 ];
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.2 - starting...');
+  Logger.log('create-form.gs v1.3 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
-    'really use AI? This anonymous, open survey collects ~5 minutes of your experience ' +
+    'really use AI? This anonymous, open survey collects ~8 minutes of your experience ' +
     'and publishes ALL results as open data (CC0) with a real-time public dashboard. ' +
     'No email or personal data is collected.'
   );
@@ -189,7 +189,7 @@ function createSurveyForm() {
 
   form.addListItem()
     .setTitle('Which one do you rely on the most?')
-    .setChoiceValues(AI_TOOLS)
+    .setChoiceValues(AI_TOOLS.concat(['Other']))
     .setRequired(true);
 
   form.addMultipleChoiceItem()
@@ -209,7 +209,8 @@ function createSurveyForm() {
       'My employer provides paid tools',
       'I pay for them personally',
       'I only use free tiers',
-      'A mix of employer and personal'
+      'A mix of employer and personal',
+      'Not applicable'
     ])
     .setRequired(true);
 
@@ -251,7 +252,7 @@ function createSurveyForm() {
 
   form.addListItem()
     .setTitle('Which task benefits the most from AI?')
-    .setChoiceValues(TASKS)
+    .setChoiceValues(TASKS.concat(['Other']))
     .setRequired(true);
 
   form.addMultipleChoiceItem()
@@ -273,10 +274,35 @@ function createSurveyForm() {
   addEffectScale(form, 'What effect has AI had on your learning and skill growth?');
   addEffectScale(form, 'What effect has AI had on your job satisfaction?');
 
-  form.addMultipleChoiceItem()
-    .setTitle('Do you review AI-generated code before using it?')
-    .setChoiceValues(['Always', 'Usually', 'Sometimes', 'Rarely', 'Never'])
+  form.addScaleItem()
+    .setTitle('Since using AI, do you feel more or less challenged by your work?')
+    .setBounds(1, 5)
+    .setLabels('Much less challenged', 'Much more challenged')
     .setRequired(true);
+
+  form.addScaleItem()
+    .setTitle('What effect has AI had on how deeply you think about problems?')
+    .setBounds(1, 5)
+    .setLabels('I think much less deeply', 'I think much more deeply')
+    .setRequired(true);
+
+  form.addScaleItem()
+    .setTitle('What effect has AI had on your motivation at work?')
+    .setBounds(1, 5)
+    .setLabels('Much less motivated', 'Much more motivated')
+    .setRequired(true);
+
+  var goBackItem = form.addMultipleChoiceItem()
+    .setTitle('If you could, would you go back to working without AI?')
+    .setRequired(true);
+  goBackItem.setChoiceValues([
+    'Definitely not',
+    'Probably not',
+    'Not sure',
+    'Probably yes',
+    'Definitely yes',
+    'Not applicable'
+  ]);
 
   form.addMultipleChoiceItem()
     .setTitle('Has AI-generated output ever caused a bug or incident that reached production?')
@@ -284,11 +310,62 @@ function createSurveyForm() {
       'Yes, a serious incident',
       'Yes, minor issues',
       'No',
-      'Not sure'
+      'Not sure',
+      'Not applicable'
     ])
     .setRequired(true);
 
-  // ---------- Page 6: Your organization ----------
+  // ---------- Page 6: AI-generated code & verification ----------
+  form.addPageBreakItem()
+    .setTitle('AI-generated code & verification')
+    .setHelpText('If AI does not generate code for you (for example you only use it for documentation or ops), feel free to pick "Not applicable".');
+
+  var reviewItem = form.addMultipleChoiceItem()
+    .setTitle('Do you review AI-generated code before using it?')
+    .showOtherOption(true)
+    .setRequired(true);
+  reviewItem.setChoiceValues(['Always', 'Usually', 'Sometimes', 'Rarely', 'Never', 'Not applicable']);
+
+  var readItem = form.addMultipleChoiceItem()
+    .setTitle('How much of the AI-generated code do you actually read?')
+    .showOtherOption(true)
+    .setRequired(true);
+  readItem.setChoiceValues([
+    'Every line',
+    'Most of it',
+    'I skim through it',
+    'Only the risky or critical parts',
+    'Almost none',
+    'Not applicable'
+  ]);
+
+  var teamReviewItem = form.addMultipleChoiceItem()
+    .setTitle('Does your team still do code reviews for AI-generated code?')
+    .showOtherOption(true)
+    .setRequired(true);
+  teamReviewItem.setChoiceValues([
+    'Yes, same as for human-written code',
+    'Yes, but lighter than before',
+    'No, AI-generated code skips review',
+    "I don't have a team",
+    'Not applicable'
+  ]);
+
+  var testItem = form.addCheckboxItem()
+    .setTitle('How do you test AI-generated code? (select all that apply)')
+    .showOtherOption(true)
+    .setRequired(true);
+  testItem.setChoiceValues([
+    'I write and run unit tests',
+    'I run the existing test suite',
+    'Manual testing',
+    'I ask the AI to write tests for its own code',
+    'Code review only',
+    "I don't specifically test it",
+    'Not applicable'
+  ]);
+
+  // ---------- Page 7: Your organization ----------
   form.addPageBreakItem()
     .setTitle('Your organization')
     .setHelpText('Students and researchers: answer about your university or program.');
@@ -312,14 +389,15 @@ function createSurveyForm() {
       'Yes, formal training',
       'Yes, informal (tips, lunch & learns...)',
       'No',
-      "I don't know"
+      "I don't know",
+      'Not applicable'
     ])
     .setRequired(true);
 
   form.addTextItem()
     .setTitle('Which AI tools (if any) are explicitly banned where you work or study?');
 
-  // ---------- Page 7: Concerns & outlook (all respondents) ----------
+  // ---------- Page 8: Concerns & outlook (all respondents) ----------
   form.addPageBreakItem().setTitle('Concerns & outlook');
 
   form.addCheckboxItem()

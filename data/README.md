@@ -32,5 +32,9 @@ See [`data-dictionary.md`](data-dictionary.md).
 - Cross-tabulate tool adoption by role, seniority, region, or company size
 - Compare perceived productivity gains (Q19) with reported time saved (Q18)
 - Compare chat vs agentic workflows (Q14) with impact scores and IDE usage (Q15)
-- Study non-adopters: concerns (Q28) vs. stated reasons (Q31)
+- Explore motivation & cognition: challenge (Q23), deep thinking (Q24),
+  motivation (Q25), "go back without AI" (Q26) — by role and seniority
+- Study verification habits: reviewing (Q28) and reading depth (Q29) vs.
+  reported production incidents (Q27)
+- Study non-adopters: concerns (Q35) vs. stated reasons (Q38)
 - Track responses over time after each wave of promotion
