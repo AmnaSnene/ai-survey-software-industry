@@ -175,7 +175,7 @@ function createSurveyForm() {
   // ---------- Page 3: AI tools & adoption ----------
   form.addPageBreakItem().setTitle('AI tools & adoption');
 
-  var usage = form.addMultipleChoiceItem()
+  form.addMultipleChoiceItem()
     .setTitle('Do you use AI tools for your work or studies?')
     .setRequired(true);
   // Choices (with skip logic) are attached at the end, once the target page exists.
@@ -319,8 +319,7 @@ function createSurveyForm() {
     .setTitle('Which AI tools (if any) are explicitly banned where you work or study?');
 
   // ---------- Page 7: Concerns & outlook (all respondents) ----------
-  var pageOutlook = form.addPageBreakItem()
-    .setTitle('Concerns & outlook');
+  form.addPageBreakItem().setTitle('Concerns & outlook');
 
   form.addCheckboxItem()
     .setTitle('What are your biggest concerns about AI in software work? (select all that apply)')
@@ -373,21 +372,31 @@ function createSurveyForm() {
 
   // ---------- Skip logic ----------
   // Non-users jump from the adoption question straight to "Concerns & outlook".
-  usage.setChoices([
-    usage.createChoice('Yes, regularly'),
-    usage.createChoice('Yes, occasionally'),
-    usage.createChoice('I tried, but stopped', pageOutlook),
-    usage.createChoice('No, never', pageOutlook)
+  // NOTE: item handles obtained earlier can go stale after adding more items,
+  // so we re-fetch fresh ones by title right before wiring the navigation.
+  var usageItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
+  var outlookPage = findPageBreakByTitle(form, 'Concerns & outlook');
+  usageItem.setChoices([
+    usageItem.createChoice('Yes, regularly'),
+    usageItem.createChoice('Yes, occasionally'),
+    usageItem.createChoice('I tried, but stopped', outlookPage),
+    usageItem.createChoice('No, never', outlookPage)
   ]);
 
   // ---------- Responses spreadsheet (linked automatically) ----------
   var sheet = SpreadsheetApp.create('AI Survey - Responses (open data)');
-  form.setDestination(FormApp.DestinationType.SPREADSHEET, sheet.getId());
+  var sheetNote = sheet.getUrl() + ' (linked automatically)';
+  try {
+    form.setDestination(FormApp.DestinationType.SPREADSHEET, sheet.getId());
+  } catch (e) {
+    sheetNote = sheet.getUrl() +
+      ' (NOT linked - link it manually: form editor -> Responses -> Link to Sheets)';
+  }
 
   Logger.log('=== Survey created ===');
   Logger.log('Edit form:        ' + form.getEditUrl());
   Logger.log('Public form URL:  ' + form.getPublishedUrl());
-  Logger.log('Responses sheet:  ' + sheet.getUrl());
+  Logger.log('Responses sheet:  ' + sheetNote);
   Logger.log('Next steps: see survey/setup.md');
 }
 
@@ -398,4 +407,26 @@ function addEffectScale(form, title) {
     .setBounds(1, 5)
     .setLabels('Much worse', 'Much better')
     .setRequired(true);
+}
+
+/** Re-fetches a fresh MultipleChoiceItem handle by title prefix. */
+function findMultipleChoiceByTitle(form, titlePrefix) {
+  var items = form.getItems(FormApp.ItemType.MULTIPLE_CHOICE);
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].getTitle().indexOf(titlePrefix) === 0) {
+      return items[i].asMultipleChoiceItem();
+    }
+  }
+  throw new Error('Multiple choice item not found: ' + titlePrefix);
+}
+
+/** Re-fetches a fresh PageBreakItem handle by exact title. */
+function findPageBreakByTitle(form, title) {
+  var items = form.getItems(FormApp.ItemType.PAGE_BREAK);
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].getTitle() === title) {
+      return items[i].asPageBreakItem();
+    }
+  }
+  throw new Error('Page break not found: ' + title);
 }
