@@ -48,6 +48,19 @@ var TASKS = [
   'Communication (emails, specs, tickets)'
 ];
 
+var EDITORS = [
+  'VS Code',
+  'Cursor',
+  'JetBrains IDEs (IntelliJ, PyCharm...)',
+  'Visual Studio',
+  'Neovim / Vim',
+  'Zed',
+  'Windsurf',
+  'Emacs',
+  'Other',
+  'I mostly do not use an IDE or editor anymore'
+];
+
 var ROLES = [
   'Software engineer / Developer',
   'DevOps / SRE / Platform engineer',
@@ -210,6 +223,21 @@ function createSurveyForm() {
       'Mobile app'
     ])
     .setRequired(true);
+
+  form.addMultipleChoiceItem()
+    .setTitle('Which best describes your AI workflow?')
+    .setChoiceValues([
+      'Chat - I ask questions and copy/paste answers',
+      'Editor assistance - autocomplete and inline suggestions as I type',
+      'Agentic - the AI edits files, runs commands, and completes multi-step tasks',
+      'A mix of the above'
+    ])
+    .setRequired(true);
+
+  var ideItem = form.addListItem()
+    .setTitle('Which IDE or editor do you mainly use?')
+    .setRequired(true);
+  ideItem.setChoiceValues(EDITORS);
 
   // ---------- Page 4: How you use AI ----------
   form.addPageBreakItem().setTitle('How you use AI');

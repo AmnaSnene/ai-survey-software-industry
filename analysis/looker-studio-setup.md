@@ -46,27 +46,29 @@ so clicking any chart filters the whole page.
 - Bar chart: SUM of each `tool_*` calculated field (tool popularity)
 - Pie: frequency of use (Q11)
 - Stacked bar: who pays (Q12) by role
+- Bar: AI workflow type (Q14) — chat vs editor assistance vs agentic
+- Bar: IDE/editor usage (Q15), highlighting "I mostly do not use an IDE anymore"
 
 ### Page 3 — Use cases
 - Bar chart: SUM of each `task_*` calculated field
 - Stacked bar: top tasks **by role** (breakdown dimension) — the chart people
   will screenshot
-- Bar: time saved per week (Q16)
+- Bar: time saved per week (Q18)
 
 ### Page 4 — Impact
-- 100% stacked bars for the four 1–5 effect scales (Q17–Q20)
+- 100% stacked bars for the four 1–5 effect scales (Q19–Q22)
 - Grouped bar: average effect score by role
-- Bar: review habits (Q21) and production incidents (Q22)
+- Bar: review habits (Q23) and production incidents (Q24)
 
 ### Page 5 — Organization
-- Stacked bar: AI policy (Q23) by company size (Q4)
-- Bar: training offered (Q24)
+- Stacked bar: AI policy (Q25) by company size (Q4)
+- Bar: training offered (Q26)
 
 ### Page 6 — Concerns & outlook
 - Bar: SUM of each `concern_*` calculated field
-- Stacked bar: worry level (Q27) by role or experience
-- Bar: 3-year outlook (Q28)
-- Optional word-frequency table over the open question (Q30)
+- Stacked bar: worry level (Q29) by role or experience
+- Bar: 3-year outlook (Q30)
+- Optional word-frequency table over the open question (Q32)
 
 ## 4. Keep it real-time
 

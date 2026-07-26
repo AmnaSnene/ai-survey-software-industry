@@ -30,6 +30,7 @@ See [`data-dictionary.md`](data-dictionary.md).
 ## Reuse ideas
 
 - Cross-tabulate tool adoption by role, seniority, region, or company size
-- Compare perceived productivity gains (Q17) with reported time saved (Q16)
-- Study non-adopters: concerns (Q26) vs. stated reasons (Q29)
+- Compare perceived productivity gains (Q19) with reported time saved (Q18)
+- Compare chat vs agentic workflows (Q14) with impact scores and IDE usage (Q15)
+- Study non-adopters: concerns (Q28) vs. stated reasons (Q31)
 - Track responses over time after each wave of promotion

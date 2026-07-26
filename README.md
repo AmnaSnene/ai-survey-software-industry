@@ -30,7 +30,8 @@ reproducible and version-controlled.
 
 - **Demographics** — role, seniority, employment, org size, industry, region
   (incl. students & researchers)
-- **Tools & adoption** — which AI tools, frequency, who pays, how they're used
+- **Tools & adoption** — which AI tools, frequency, who pays, chat vs agentic
+  workflows, IDE/editor usage
 - **Use cases by role** — coding, review, tests, CI/CD, IaC, incident response…
 - **Impact** — productivity, quality, learning, satisfaction, incidents
 - **Organization** — AI policies, training, banned tools
