@@ -27,12 +27,18 @@ var AI_TOOLS = [
   'JetBrains AI Assistant',
   'Microsoft 365 Copilot',
   'Perplexity',
+  'DeepSeek',
+  'Qwen',
+  'Kimi',
+  'GLM (Zhipu / Z.ai)',
+  'MiniMax',
   'Claude Code',
   'OpenAI Codex',
   'Gemini CLI',
   'Aider',
   'Devin',
   'OpenHands',
+  'OpenCode',
   'Self-hosted / local models (Ollama, LM Studio...)'
 ];
 
@@ -82,7 +88,7 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.5 - starting...');
+  Logger.log('create-form.gs v1.6 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
