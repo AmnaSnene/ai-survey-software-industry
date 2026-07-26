@@ -73,6 +73,7 @@ var ROLES = [
 ];
 
 function createSurveyForm() {
+  Logger.log('create-form.gs v1.2 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
@@ -374,14 +375,22 @@ function createSurveyForm() {
   // Non-users jump from the adoption question straight to "Concerns & outlook".
   // NOTE: item handles obtained earlier can go stale after adding more items,
   // so we re-fetch fresh ones by title right before wiring the navigation.
-  var usageItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
-  var outlookPage = findPageBreakByTitle(form, 'Concerns & outlook');
-  usageItem.setChoices([
-    usageItem.createChoice('Yes, regularly'),
-    usageItem.createChoice('Yes, occasionally'),
-    usageItem.createChoice('I tried, but stopped', outlookPage),
-    usageItem.createChoice('No, never', outlookPage)
-  ]);
+  try {
+    var usageItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
+    var outlookPage = findPageBreakByTitle(form, 'Concerns & outlook');
+    usageItem.setChoices([
+      usageItem.createChoice('Yes, regularly'),
+      usageItem.createChoice('Yes, occasionally'),
+      usageItem.createChoice('I tried, but stopped', outlookPage),
+      usageItem.createChoice('No, never', outlookPage)
+    ]);
+  } catch (e) {
+    Logger.log('WARNING: skip logic could not be set automatically: ' + e);
+    Logger.log('Set it manually (2 min): open the form editor -> question ' +
+      '"Do you use AI tools for your work or studies?" -> three-dot menu -> ' +
+      '"Go to section based on answer" -> set "I tried, but stopped" and ' +
+      '"No, never" to the section "Concerns & outlook".');
+  }
 
   // ---------- Responses spreadsheet (linked automatically) ----------
   var sheet = SpreadsheetApp.create('AI Survey - Responses (open data)');
