@@ -89,7 +89,7 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.8 - starting...');
+  Logger.log('create-form.gs v1.9 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
@@ -535,24 +535,36 @@ function createSurveyForm() {
   // ---------- Skip logic ----------
   // Non-users (and those who prefer not to say) jump from the adoption question
   // straight to "Concerns & outlook".
-  // NOTE: item handles obtained earlier can go stale after adding more items,
-  // so we re-fetch fresh ones by title right before wiring the navigation.
-  try {
-    var usageItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
-    var outlookPage = findPageBreakByTitle(form, 'Concerns & outlook');
-    usageItem.setChoices([
-      usageItem.createChoice('Yes, regularly'),
-      usageItem.createChoice('Yes, occasionally'),
-      usageItem.createChoice('I tried, but stopped', outlookPage),
-      usageItem.createChoice('No, never', outlookPage),
-      usageItem.createChoice(PNTS, outlookPage)
-    ]);
-  } catch (e) {
-    Logger.log('WARNING: skip logic could not be set automatically: ' + e);
-    Logger.log('Set it manually (2 min): open the form editor -> question ' +
-      '"Do you use AI tools for your work or studies?" -> three-dot menu -> ' +
-      '"Go to section based on answer" -> set "I tried, but stopped", "No, never" ' +
-      'and "Prefer not to say" to the section "Concerns & outlook".');
+  // GUARANTEE: the options are created no matter what. If navigation wiring
+  // fails (twice), we fall back to plain options + loud manual instructions.
+  var usageOptions = ['Yes, regularly', 'Yes, occasionally', 'I tried, but stopped', 'No, never', PNTS];
+  var skipLogicOk = false;
+  for (var attempt = 1; attempt <= 2 && !skipLogicOk; attempt++) {
+    try {
+      var usageItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
+      var outlookPage = findPageBreakByTitle(form, 'Concerns & outlook');
+      usageItem.setChoices([
+        usageItem.createChoice(usageOptions[0]),
+        usageItem.createChoice(usageOptions[1]),
+        usageItem.createChoice(usageOptions[2], outlookPage),
+        usageItem.createChoice(usageOptions[3], outlookPage),
+        usageItem.createChoice(usageOptions[4], outlookPage)
+      ]);
+      skipLogicOk = (usageItem.getChoices().length === usageOptions.length);
+    } catch (e) {
+      Logger.log('Skip logic attempt ' + attempt + ' failed: ' + e);
+      if (attempt < 2) Utilities.sleep(2000);
+    }
+  }
+  if (skipLogicOk) {
+    Logger.log('Skip logic: OK - "Do you use AI tools..." has 5 options, the last 3 jump to "Concerns & outlook".');
+  } else {
+    var fallbackItem = findMultipleChoiceByTitle(form, 'Do you use AI tools');
+    fallbackItem.setChoiceValues(usageOptions);
+    Logger.log('!!! The 5 options of "Do you use AI tools..." were created WITHOUT skip logic.');
+    Logger.log('!!! Wire it manually (2 min): form editor -> that question -> three-dot menu -> ' +
+      '"Go to section based on answer" -> set "I tried, but stopped", "No, never" and ' +
+      '"Prefer not to say" to the section "Concerns & outlook".');
   }
 
   // ---------- Responses spreadsheet (linked automatically) ----------
