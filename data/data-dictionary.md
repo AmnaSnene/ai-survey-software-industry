@@ -42,14 +42,18 @@ questions are optional, so their cells may be empty (skip = opt-out).
 | 29 | How much of the AI-generated code do you actually read? | text | Every line · Most of it · I skim through it · Only the risky or critical parts · Almost none · Not applicable · Prefer not to say · free text (Other) |
 | 30 | Does your team still do code reviews for AI-generated code? | text | Yes, same as for human-written code · Yes, but lighter than before · No, AI-generated code skips review · I don't have a team · Not applicable · Prefer not to say · free text (Other) |
 | 31 | How do you test AI-generated code? (select all that apply) | text (multi) | I write and run unit tests · I run the existing test suite · Manual testing · I ask the AI to write tests for its own code · Code review only · I don't specifically test it · Not applicable · Prefer not to say · free text (Other) |
-| 32 | Which best describes your organization's AI policy? | text | AI use is encouraged and funded · Allowed with restrictions · Allowed, but no official guidance · Discouraged or banned · There is no policy · I don't know · Not applicable · Prefer not to say |
-| 33 | Does your organization provide AI training? | text | Yes, formal training · Yes, informal (tips, lunch & learns...) · No · I don't know · Not applicable · Prefer not to say |
-| 34 | Which AI tools (if any) are explicitly banned where you work or study? | text | Free text; may be empty. |
-| 35 | What are your biggest concerns about AI in software work? (select all that apply) | text (multi) | Security vulnerabilities · Data privacy / leaks · Intellectual property & licensing · Job displacement · Skill erosion · Over-reliance on AI · Incorrect output / hallucinations · Bias & ethics · Environmental impact · None of these · Prefer not to say |
-| 36 | How worried are you about AI's impact on your job or career prospects? | integer 1–5 | 1 = Not worried at all … 5 = Extremely worried; may be empty (optional) |
-| 37 | In 3 years, how do you expect AI's role in your daily work to evolve? | text | It will shrink · It will stay about the same · It will grow somewhat · It will grow significantly · AI will perform most of my current tasks · Prefer not to say |
-| 38 | If you do NOT currently use AI tools, why not? (select all that apply - skip if you use AI) | text (multi) | Company policy forbids it · Privacy or security concerns · Not useful for my work · Output quality concerns · Ethical concerns · Cost · I haven't had the chance to try · Prefer not to say · free text (Other). Usually empty for users. |
-| 39 | What is the biggest change AI has made in the way you work? (optional) | text | Free text; may be empty. |
+| 32 | Overall, what effect has AI had on collaboration within your team? | integer 1–5 | 1 = Much worse … 5 = Much better; may be empty (optional) |
+| 33 | Since using AI, how often do you ask colleagues for help? | text | Much less often · Less often · About the same · More often · Much more often · Not applicable · Prefer not to say |
+| 34 | How has AI affected knowledge sharing in your team (mentoring, pair programming, asking questions)? | text | Greatly reduced it · Somewhat reduced it · No change · Somewhat increased it · Greatly increased it · Not applicable · Prefer not to say |
+| 35 | Do you share AI prompts, workflows, or custom agents with your teammates? | text | Regularly · Sometimes · Never · I don't have teammates · Prefer not to say · free text (Other) |
+| 36 | Which best describes your organization's AI policy? | text | AI use is encouraged and funded · Allowed with restrictions · Allowed, but no official guidance · Discouraged or banned · There is no policy · I don't know · Not applicable · Prefer not to say |
+| 37 | Does your organization provide AI training? | text | Yes, formal training · Yes, informal (tips, lunch & learns...) · No · I don't know · Not applicable · Prefer not to say |
+| 38 | Which AI tools (if any) are explicitly banned where you work or study? | text | Free text; may be empty. |
+| 39 | What are your biggest concerns about AI in software work? (select all that apply) | text (multi) | Security vulnerabilities · Data privacy / leaks · Intellectual property & licensing · Job displacement · Skill erosion · Over-reliance on AI · Incorrect output / hallucinations · Bias & ethics · Environmental impact · None of these · Prefer not to say |
+| 40 | How worried are you about AI's impact on your job or career prospects? | integer 1–5 | 1 = Not worried at all … 5 = Extremely worried; may be empty (optional) |
+| 41 | In 3 years, how do you expect AI's role in your daily work to evolve? | text | It will shrink · It will stay about the same · It will grow somewhat · It will grow significantly · AI will perform most of my current tasks · Prefer not to say |
+| 42 | If you do NOT currently use AI tools, why not? (select all that apply - skip if you use AI) | text (multi) | Company policy forbids it · Privacy or security concerns · Not useful for my work · Output quality concerns · Ethical concerns · Cost · I haven't had the chance to try · Prefer not to say · free text (Other). Usually empty for users. |
+| 43 | What is the biggest change AI has made in the way you work? (optional) | text | Free text; may be empty. |
 
 ## Notes
 
@@ -57,7 +61,7 @@ questions are optional, so their cells may be empty (skip = opt-out).
   comma-separated values. Note that free-text "Other" answers may themselves
   contain commas — split on `, ` only for the known fixed options, or use
   `CONTAINS_TEXT` per known option (see the Looker Studio guide).
-- Questions 9–34 are empty for respondents who answered "I tried, but stopped",
-  "No, never", or "Prefer not to say" in Q8 (they skip sections 2–6 by design).
+- Questions 9–38 are empty for respondents who answered "I tried, but stopped",
+  "No, never", or "Prefer not to say" in Q8 (they skip sections 2–7 by design).
 - When charting, exclude `Prefer not to say` (and empty scale cells) from
   averages — treat them as missing data, not as a neutral answer.

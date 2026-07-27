@@ -37,6 +37,8 @@ reproducible and version-controlled.
   challenge, deep thinking, incidents
 - **AI code verification** — review habits, how much AI code is actually read,
   team review practices, testing approaches
+- **Team collaboration** — help-seeking, knowledge sharing & mentoring,
+  sharing prompts and workflows with teammates
 - **Organization** — AI policies, training, banned tools
 - **Concerns & outlook** — risks, career anxiety, 3-year expectations
 

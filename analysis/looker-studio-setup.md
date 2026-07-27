@@ -67,15 +67,21 @@ so clicking any chart filters the whole page.
 - Stacked bar: team review practices (Q30) by company size
 - Bar: SUM of each `test_*` calculated field (Q31)
 
-### Page 6 — Organization
-- Stacked bar: AI policy (Q32) by company size (Q4)
-- Bar: training offered (Q33)
+### Page 6 — Team collaboration
+- 100% stacked bar: overall collaboration effect (Q32)
+- Stacked bar: asking colleagues for help (Q33) by role or seniority
+- Bar: knowledge sharing change (Q34)
+- Bar: sharing prompts/workflows with teammates (Q35)
 
-### Page 7 — Concerns & outlook
+### Page 7 — Organization
+- Stacked bar: AI policy (Q36) by company size (Q4)
+- Bar: training offered (Q37)
+
+### Page 8 — Concerns & outlook
 - Bar: SUM of each `concern_*` calculated field
-- Stacked bar: worry level (Q36) by role or experience
-- Bar: 3-year outlook (Q37)
-- Optional word-frequency table over the open question (Q39)
+- Stacked bar: worry level (Q40) by role or experience
+- Bar: 3-year outlook (Q41)
+- Optional word-frequency table over the open question (Q43)
 
 ## 4. Keep it real-time
 

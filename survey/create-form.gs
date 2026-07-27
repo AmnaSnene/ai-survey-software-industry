@@ -89,13 +89,14 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.7 - starting...');
+  Logger.log('create-form.gs v1.8 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
     'really use AI? This anonymous, open survey collects ~8 minutes of your experience ' +
     'and publishes ALL results as open data (CC0) with a real-time public dashboard. ' +
-    'No email or personal data is collected.'
+    'No email or personal data is collected. ' +
+    'The live dashboard is public — but please answer before checking it, so your answers stay yours.'
   );
   form.setCollectEmail(false);
   form.setAllowResponseEdits(false);
@@ -397,7 +398,52 @@ function createSurveyForm() {
     PNTS
   ]);
 
-  // ---------- Page 7: Your organization ----------
+  // ---------- Page 7: AI & your team ----------
+  form.addPageBreakItem()
+    .setTitle('AI & your team')
+    .setHelpText('Students: think about classmates and project teams.');
+
+  addEffectScale(form, 'Overall, what effect has AI had on collaboration within your team?');
+
+  form.addMultipleChoiceItem()
+    .setTitle('Since using AI, how often do you ask colleagues for help?')
+    .setChoiceValues([
+      'Much less often',
+      'Less often',
+      'About the same',
+      'More often',
+      'Much more often',
+      'Not applicable',
+      PNTS
+    ])
+    .setRequired(true);
+
+  form.addMultipleChoiceItem()
+    .setTitle('How has AI affected knowledge sharing in your team (mentoring, pair programming, asking questions)?')
+    .setChoiceValues([
+      'Greatly reduced it',
+      'Somewhat reduced it',
+      'No change',
+      'Somewhat increased it',
+      'Greatly increased it',
+      'Not applicable',
+      PNTS
+    ])
+    .setRequired(true);
+
+  var shareItem = form.addMultipleChoiceItem()
+    .setTitle('Do you share AI prompts, workflows, or custom agents with your teammates?')
+    .showOtherOption(true)
+    .setRequired(true);
+  shareItem.setChoiceValues([
+    'Regularly',
+    'Sometimes',
+    'Never',
+    "I don't have teammates",
+    PNTS
+  ]);
+
+  // ---------- Page 8: Your organization ----------
   form.addPageBreakItem()
     .setTitle('Your organization')
     .setHelpText('Students and researchers: answer about your university or program.');
@@ -431,7 +477,7 @@ function createSurveyForm() {
   form.addTextItem()
     .setTitle('Which AI tools (if any) are explicitly banned where you work or study?');
 
-  // ---------- Page 8: Concerns & outlook (all respondents) ----------
+  // ---------- Page 9: Concerns & outlook (all respondents) ----------
   form.addPageBreakItem().setTitle('Concerns & outlook');
 
   form.addCheckboxItem()

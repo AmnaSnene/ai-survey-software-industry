@@ -36,5 +36,7 @@ See [`data-dictionary.md`](data-dictionary.md).
   motivation (Q25), "go back without AI" (Q26) — by role and seniority
 - Study verification habits: reviewing (Q28) and reading depth (Q29) vs.
   reported production incidents (Q27)
-- Study non-adopters: concerns (Q35) vs. stated reasons (Q38)
+- Explore team effects: collaboration change (Q32) vs. help-seeking (Q33)
+  and knowledge sharing (Q34)
+- Study non-adopters: concerns (Q39) vs. stated reasons (Q42)
 - Track responses over time after each wave of promotion
