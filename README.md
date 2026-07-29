@@ -4,7 +4,7 @@ An **anonymous, open-data survey** on how software engineers, developers,
 DevOps/SREs, QA engineers, managers, students, and researchers actually use AI
 in their daily work — what tools, what for, what impact, and what worries them.
 
-- **Take the survey** (~8 min): `TODO: paste public Google Form link after launch`
+- **Take the survey** (~6 min): https://docs.google.com/forms/d/e/1FAIpQLSesy6faSqHOU8uDCFXqu3LLRZiHcP_L5LzCq0Thtkb2Y28IsQ/viewform
 - **Live dashboard**: `TODO: paste Looker Studio link`
 - **Raw open data**: `TODO: paste shared Google Sheet link` — also snapshotted
   in [`data/exports/`](data/)
