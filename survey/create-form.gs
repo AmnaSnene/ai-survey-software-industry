@@ -21,25 +21,10 @@ var AI_TOOLS = [
   'Claude',
   'Google Gemini',
   'Cursor',
-  'Windsurf / Codeium',
-  'Amazon Q Developer',
-  'Tabnine',
-  'JetBrains AI Assistant',
-  'Microsoft 365 Copilot',
-  'Perplexity',
-  'Grok',
-  'DeepSeek',
-  'Qwen',
-  'Kimi',
-  'GLM (Zhipu / Z.ai)',
-  'MiniMax',
   'Claude Code',
   'OpenAI Codex',
-  'Gemini CLI',
-  'Aider',
-  'Devin',
-  'OpenHands',
-  'OpenCode',
+  'DeepSeek',
+  'Qwen',
   'Self-hosted / local models (Ollama, LM Studio...)'
 ];
 
@@ -89,7 +74,7 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.9 - starting...');
+  Logger.log('create-form.gs v1.10 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
