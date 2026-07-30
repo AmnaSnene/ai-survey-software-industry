@@ -44,44 +44,43 @@ so clicking any chart filters the whole page.
 
 ### Page 2 — Tools & adoption
 - Bar chart: SUM of each `tool_*` calculated field (tool popularity)
-- Pie: frequency of use (Q11)
-- Stacked bar: who pays (Q12) by role
-- Bar: AI workflow type (Q14) — chat vs editor assistance vs agentic
-- Bar: IDE/editor usage (Q15), highlighting "I mostly do not use an IDE anymore"
+- Pie: frequency of use (Q10)
+- Stacked bar: who pays (Q11) by role
+- Bar: AI workflow type (Q13) — chat vs editor assistance vs agentic
+- Bar: IDE/editor usage (Q14), highlighting "I mostly do not use an IDE anymore"
 
 ### Page 3 — Use cases
 - Bar chart: SUM of each `task_*` calculated field
 - Stacked bar: top tasks **by role** (breakdown dimension) — the chart people
   will screenshot
-- Bar: time saved per week (Q18)
+- Bar: time saved per week (Q16)
 
 ### Page 4 — Impact
-- 100% stacked bars for the four 1–5 effect scales (Q19–Q22)
-- 100% stacked bars for the challenge / deep-thinking / motivation scales (Q23–Q25)
-- Bar: "would you go back to working without AI?" (Q26), breakdown by role
-- Bar: production incidents (Q27)
+- 100% stacked bars for the six 1–5 effect scales (Q17–Q22)
+- Bar: "would you go back to working without AI?" (Q23), breakdown by role
+- Bar: production incidents (Q24)
 
 ### Page 5 — AI code verification
-- Stacked bar: review habits (Q28) by role
-- Bar: how much AI-generated code people actually read (Q29)
-- Stacked bar: team review practices (Q30) by company size
-- Bar: SUM of each `test_*` calculated field (Q31)
+- Stacked bar: review habits (Q25) by role
+- Bar: how much AI-generated code people actually read (Q26)
+- Stacked bar: team review practices (Q27) by company size
+- Bar: SUM of each `test_*` calculated field (Q28)
 
 ### Page 6 — Team collaboration
-- 100% stacked bar: overall collaboration effect (Q32)
-- Stacked bar: asking colleagues for help (Q33) by role or seniority
-- Bar: knowledge sharing change (Q34)
-- Bar: sharing prompts/workflows with teammates (Q35)
+- 100% stacked bar: overall collaboration effect (Q29)
+- Stacked bar: asking colleagues for help (Q30) by role or seniority
+- Bar: knowledge sharing change (Q31)
+- Bar: sharing prompts/workflows with teammates (Q32)
 
 ### Page 7 — Organization
-- Stacked bar: AI policy (Q36) by company size (Q4)
-- Bar: training offered (Q37)
+- Stacked bar: AI policy (Q33) by company size (Q4)
+- Bar: training offered (Q34)
 
 ### Page 8 — Concerns & outlook
 - Bar: SUM of each `concern_*` calculated field
-- Stacked bar: worry level (Q40) by role or experience
-- Bar: 3-year outlook (Q41)
-- Optional word-frequency table over the open question (Q43)
+- Stacked bar: worry level (Q37) by role or experience
+- Bar: 3-year outlook (Q38)
+- Optional word-frequency table over the open question (Q40)
 
 ## 4. Keep it real-time
 

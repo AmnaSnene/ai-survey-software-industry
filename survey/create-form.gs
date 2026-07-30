@@ -74,11 +74,11 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.10 - starting...');
+  Logger.log('create-form.gs v1.11 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
-    'really use AI? This anonymous, open survey collects ~8 minutes of your experience ' +
+    'really use AI? This anonymous, open survey collects ~6 minutes of your experience ' +
     'and publishes ALL results as open data (CC0) with a real-time public dashboard. ' +
     'No email or personal data is collected. ' +
     'The live dashboard is public — but please answer before checking it, so your answers stay yours.'
@@ -193,11 +193,6 @@ function createSurveyForm() {
     .showOtherOption(true)
     .setRequired(true);
 
-  form.addListItem()
-    .setTitle('Which one do you rely on the most?')
-    .setChoiceValues(AI_TOOLS.concat(['Other', PNTS]))
-    .setRequired(true);
-
   form.addMultipleChoiceItem()
     .setTitle('How often do you use AI tools?')
     .setChoiceValues([
@@ -260,11 +255,6 @@ function createSurveyForm() {
     .showOtherOption(true)
     .setRequired(true);
 
-  form.addListItem()
-    .setTitle('Which task benefits the most from AI?')
-    .setChoiceValues(TASKS.concat(['Other', PNTS]))
-    .setRequired(true);
-
   form.addMultipleChoiceItem()
     .setTitle('How much time does AI save you per week?')
     .setChoiceValues([
@@ -285,7 +275,6 @@ function createSurveyForm() {
   addEffectScale(form, 'Overall, what effect has AI had on your productivity?');
   addEffectScale(form, 'What effect has AI had on the quality of your work?');
   addEffectScale(form, 'What effect has AI had on your learning and skill growth?');
-  addEffectScale(form, 'What effect has AI had on your job satisfaction?');
 
   form.addScaleItem()
     .setTitle('Since using AI, do you feel more or less challenged by your work?')

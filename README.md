@@ -33,7 +33,7 @@ reproducible and version-controlled.
 - **Tools & adoption** — which AI tools, frequency, who pays, chat vs agentic
   workflows, IDE/editor usage
 - **Use cases by role** — coding, review, tests, CI/CD, IaC, incident response…
-- **Impact** — productivity, quality, learning, satisfaction, motivation,
+- **Impact** — productivity, quality, learning, motivation,
   challenge, deep thinking, incidents
 - **AI code verification** — review habits, how much AI code is actually read,
   team review practices, testing approaches
