@@ -74,11 +74,11 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.11 - starting...');
+  Logger.log('create-form.gs v1.12 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
-    'really use AI? This anonymous, open survey collects ~6 minutes of your experience ' +
+    'really use AI? This anonymous, open survey collects ~5 minutes of your experience ' +
     'and publishes ALL results as open data (CC0) with a real-time public dashboard. ' +
     'No email or personal data is collected. ' +
     'The live dashboard is public — but please answer before checking it, so your answers stay yours.'
@@ -101,7 +101,7 @@ function createSurveyForm() {
   var roleItem = form.addMultipleChoiceItem()
     .setTitle('Which best describes your current role?')
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
   roleItem.setChoiceValues(ROLES.concat([PNTS]));
 
   form.addMultipleChoiceItem()
@@ -115,7 +115,7 @@ function createSurveyForm() {
       '16+ years',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('What is your employment situation?')
@@ -128,7 +128,7 @@ function createSurveyForm() {
       'Other',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('How large is your organization?')
@@ -142,7 +142,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('In which industry do you work (or study)?')
@@ -161,7 +161,7 @@ function createSurveyForm() {
       PNTS
     ])
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
 
   form.addListItem()
     .setTitle('In which region are you based?')
@@ -174,7 +174,7 @@ function createSurveyForm() {
       'Oceania',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addTextItem()
     .setTitle('Which country? (optional)');
@@ -184,14 +184,14 @@ function createSurveyForm() {
 
   form.addMultipleChoiceItem()
     .setTitle('Do you use AI tools for your work or studies?')
-    .setRequired(true);
+    .setRequired(false);
   // Choices (with skip logic) are attached at the end, once the target page exists.
 
   form.addCheckboxItem()
     .setTitle('Which AI tools do you use? (select all that apply)')
     .setChoiceValues(AI_TOOLS.concat([PNTS]))
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('How often do you use AI tools?')
@@ -203,7 +203,7 @@ function createSurveyForm() {
       'Rarely',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('Who pays for the AI tools you use?')
@@ -215,7 +215,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addCheckboxItem()
     .setTitle('How do you mainly interact with AI tools? (select all that apply)')
@@ -228,7 +228,7 @@ function createSurveyForm() {
       'Mobile app',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('Which best describes your AI workflow?')
@@ -239,11 +239,11 @@ function createSurveyForm() {
       'A mix of the above',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   var ideItem = form.addListItem()
     .setTitle('Which IDE or editor do you mainly use?')
-    .setRequired(true);
+    .setRequired(false);
   ideItem.setChoiceValues(EDITORS.concat([PNTS]));
 
   // ---------- Page 4: How you use AI ----------
@@ -253,7 +253,7 @@ function createSurveyForm() {
     .setTitle('For which tasks do you use AI? (select all that apply)')
     .setChoiceValues(TASKS.concat([PNTS]))
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('How much time does AI save you per week?')
@@ -265,14 +265,13 @@ function createSurveyForm() {
       'More than 10 hours',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   // ---------- Page 5: Impact on your work ----------
   form.addPageBreakItem()
     .setTitle('Impact on your work')
     .setHelpText('All scales are optional - skip any you prefer not to answer.');
 
-  addEffectScale(form, 'Overall, what effect has AI had on your productivity?');
   addEffectScale(form, 'What effect has AI had on the quality of your work?');
   addEffectScale(form, 'What effect has AI had on your learning and skill growth?');
 
@@ -283,29 +282,10 @@ function createSurveyForm() {
     .setRequired(false);
 
   form.addScaleItem()
-    .setTitle('What effect has AI had on how deeply you think about problems?')
-    .setBounds(1, 5)
-    .setLabels('I think much less deeply', 'I think much more deeply')
-    .setRequired(false);
-
-  form.addScaleItem()
     .setTitle('What effect has AI had on your motivation at work?')
     .setBounds(1, 5)
     .setLabels('Much less motivated', 'Much more motivated')
     .setRequired(false);
-
-  var goBackItem = form.addMultipleChoiceItem()
-    .setTitle('If you could, would you go back to working without AI?')
-    .setRequired(true);
-  goBackItem.setChoiceValues([
-    'Definitely not',
-    'Probably not',
-    'Not sure',
-    'Probably yes',
-    'Definitely yes',
-    'Not applicable',
-    PNTS
-  ]);
 
   form.addMultipleChoiceItem()
     .setTitle('Has AI-generated output ever caused a bug or incident that reached production?')
@@ -317,7 +297,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   // ---------- Page 6: AI-generated code & verification ----------
   form.addPageBreakItem()
@@ -327,13 +307,13 @@ function createSurveyForm() {
   var reviewItem = form.addMultipleChoiceItem()
     .setTitle('Do you review AI-generated code before using it?')
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
   reviewItem.setChoiceValues(['Always', 'Usually', 'Sometimes', 'Rarely', 'Never', 'Not applicable', PNTS]);
 
   var readItem = form.addMultipleChoiceItem()
     .setTitle('How much of the AI-generated code do you actually read?')
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
   readItem.setChoiceValues([
     'Every line',
     'Most of it',
@@ -347,7 +327,7 @@ function createSurveyForm() {
   var teamReviewItem = form.addMultipleChoiceItem()
     .setTitle('Does your team still do code reviews for AI-generated code?')
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
   teamReviewItem.setChoiceValues([
     'Yes, same as for human-written code',
     'Yes, but lighter than before',
@@ -360,7 +340,7 @@ function createSurveyForm() {
   var testItem = form.addCheckboxItem()
     .setTitle('How do you test AI-generated code? (select all that apply)')
     .showOtherOption(true)
-    .setRequired(true);
+    .setRequired(false);
   testItem.setChoiceValues([
     'I write and run unit tests',
     'I run the existing test suite',
@@ -390,7 +370,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('How has AI affected knowledge sharing in your team (mentoring, pair programming, asking questions)?')
@@ -403,19 +383,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
-
-  var shareItem = form.addMultipleChoiceItem()
-    .setTitle('Do you share AI prompts, workflows, or custom agents with your teammates?')
-    .showOtherOption(true)
-    .setRequired(true);
-  shareItem.setChoiceValues([
-    'Regularly',
-    'Sometimes',
-    'Never',
-    "I don't have teammates",
-    PNTS
-  ]);
+    .setRequired(false);
 
   // ---------- Page 8: Your organization ----------
   form.addPageBreakItem()
@@ -434,7 +402,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addMultipleChoiceItem()
     .setTitle('Does your organization provide AI training?')
@@ -446,7 +414,7 @@ function createSurveyForm() {
       'Not applicable',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addTextItem()
     .setTitle('Which AI tools (if any) are explicitly banned where you work or study?');
@@ -469,7 +437,7 @@ function createSurveyForm() {
       'None of these',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addScaleItem()
     .setTitle("How worried are you about AI's impact on your job or career prospects?")
@@ -487,7 +455,7 @@ function createSurveyForm() {
       'AI will perform most of my current tasks',
       PNTS
     ])
-    .setRequired(true);
+    .setRequired(false);
 
   form.addCheckboxItem()
     .setTitle('If you do NOT currently use AI tools, why not? (select all that apply - skip if you use AI)')

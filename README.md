@@ -4,7 +4,7 @@ An **anonymous, open-data survey** on how software engineers, developers,
 DevOps/SREs, QA engineers, managers, students, and researchers actually use AI
 in their daily work — what tools, what for, what impact, and what worries them.
 
-- **Take the survey** (~6 min): https://docs.google.com/forms/d/e/1FAIpQLSesy6faSqHOU8uDCFXqu3LLRZiHcP_L5LzCq0Thtkb2Y28IsQ/viewform
+- **Take the survey** (~5 min): https://docs.google.com/forms/d/e/1FAIpQLSesy6faSqHOU8uDCFXqu3LLRZiHcP_L5LzCq0Thtkb2Y28IsQ/viewform
 - **Live dashboard**: `TODO: paste Looker Studio link`
 - **Raw open data**: `TODO: paste shared Google Sheet link` — also snapshotted
   in [`data/exports/`](data/)
@@ -33,12 +33,10 @@ reproducible and version-controlled.
 - **Tools & adoption** — which AI tools, frequency, who pays, chat vs agentic
   workflows, IDE/editor usage
 - **Use cases by role** — coding, review, tests, CI/CD, IaC, incident response…
-- **Impact** — productivity, quality, learning, motivation,
-  challenge, deep thinking, incidents
+- **Impact** — quality, learning, challenge, motivation, incidents
 - **AI code verification** — review habits, how much AI code is actually read,
   team review practices, testing approaches
-- **Team collaboration** — help-seeking, knowledge sharing & mentoring,
-  sharing prompts and workflows with teammates
+- **Team collaboration** — help-seeking, knowledge sharing & mentoring
 - **Organization** — AI policies, training, banned tools
 - **Concerns & outlook** — risks, career anxiety, 3-year expectations
 

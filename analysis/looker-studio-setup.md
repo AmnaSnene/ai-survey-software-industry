@@ -56,31 +56,29 @@ so clicking any chart filters the whole page.
 - Bar: time saved per week (Q16)
 
 ### Page 4 — Impact
-- 100% stacked bars for the six 1–5 effect scales (Q17–Q22)
-- Bar: "would you go back to working without AI?" (Q23), breakdown by role
-- Bar: production incidents (Q24)
+- 100% stacked bars for the four 1–5 effect scales (Q17–Q20)
+- Bar: production incidents (Q21)
 
 ### Page 5 — AI code verification
-- Stacked bar: review habits (Q25) by role
-- Bar: how much AI-generated code people actually read (Q26)
-- Stacked bar: team review practices (Q27) by company size
-- Bar: SUM of each `test_*` calculated field (Q28)
+- Stacked bar: review habits (Q22) by role
+- Bar: how much AI-generated code people actually read (Q23)
+- Stacked bar: team review practices (Q24) by company size
+- Bar: SUM of each `test_*` calculated field (Q25)
 
 ### Page 6 — Team collaboration
-- 100% stacked bar: overall collaboration effect (Q29)
-- Stacked bar: asking colleagues for help (Q30) by role or seniority
-- Bar: knowledge sharing change (Q31)
-- Bar: sharing prompts/workflows with teammates (Q32)
+- 100% stacked bar: overall collaboration effect (Q26)
+- Stacked bar: asking colleagues for help (Q27) by role or seniority
+- Bar: knowledge sharing change (Q28)
 
 ### Page 7 — Organization
-- Stacked bar: AI policy (Q33) by company size (Q4)
-- Bar: training offered (Q34)
+- Stacked bar: AI policy (Q29) by company size (Q4)
+- Bar: training offered (Q30)
 
 ### Page 8 — Concerns & outlook
 - Bar: SUM of each `concern_*` calculated field
-- Stacked bar: worry level (Q37) by role or experience
-- Bar: 3-year outlook (Q38)
-- Optional word-frequency table over the open question (Q40)
+- Stacked bar: worry level (Q33) by role or experience
+- Bar: 3-year outlook (Q34)
+- Optional word-frequency table over the open question (Q36)
 
 ## 4. Keep it real-time
 
