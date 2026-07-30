@@ -74,7 +74,7 @@ var ROLES = [
 var PNTS = 'Prefer not to say';
 
 function createSurveyForm() {
-  Logger.log('create-form.gs v1.12 - starting...');
+  Logger.log('create-form.gs v1.13 - starting...');
   var form = FormApp.create('AI Usage in the Software Industry — 2026');
   form.setDescription(
     'How do software engineers, developers, DevOps/SREs, QA, students and researchers ' +
@@ -272,7 +272,6 @@ function createSurveyForm() {
     .setTitle('Impact on your work')
     .setHelpText('All scales are optional - skip any you prefer not to answer.');
 
-  addEffectScale(form, 'What effect has AI had on the quality of your work?');
   addEffectScale(form, 'What effect has AI had on your learning and skill growth?');
 
   form.addScaleItem()
