@@ -24,10 +24,10 @@ per option** (Add a field → formula):
 CASE WHEN CONTAINS_TEXT(Which AI tools do you use? (select all that apply), "ChatGPT") THEN 1 ELSE 0 END
 ```
 
-Name it e.g. `tool_chatgpt`. Repeat for each tool, and for the tasks (Q14) and
-concerns (Q26) questions you want to chart. Then use **SUM** of each field in a
-bar chart. (Field names = the exact column headers; see
-[`data/data-dictionary.md`](../data/data-dictionary.md).)
+Name it e.g. `tool_chatgpt`. **All ~40 formulas are ready to copy-paste in
+[`calculated-fields.md`](calculated-fields.md)** — including the one trap to
+avoid ("Claude" matching "Claude Code"). Then use **SUM** of each field in a
+bar chart.
 
 ## 3. Recommended report layout
 
